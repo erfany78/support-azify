@@ -32,15 +32,18 @@ config:
     encryptionKey: "5c8bde34f19b22a014d3b6f8a9e0f6c2"
 
     # --- Font Customization (Via Custom Static Directory) ---
-    # To override the widget font-family, point to a folder containing custom assets
-    # (Uncomment this and the extraVolumeMounts/extraVolumes sections below to use)
-    # staticDir: "/libredesk/custom-static"
+    # Point the staticDir to a folder inside the container.
+    staticDir: "/libredesk/custom-static"
 
-# extraVolumeMounts:
-#   - name: custom-static-assets
-#     mountPath: /libredesk/custom-static
-# 
-# extraVolumes:
-#   - name: custom-static-assets
-#     configMap:
-#       name: libredesk-custom-static
+# To override the widget font/CSS, we mount the custom CSS file using subPath.
+# This prevents Kubernetes from creating the hidden "..data" symlink directory,
+# which causes LibreDesk to crash with "is a directory" error.
+extraVolumeMounts:
+  - name: custom-static-assets
+    mountPath: /libredesk/custom-static/custom.css  # Mount as a single file
+    subPath: custom.css
+
+extraVolumes:
+  - name: custom-static-assets
+    configMap:
+      name: libredesk-custom-static
