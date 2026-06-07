@@ -28,5 +28,5 @@ ingress:
 
 env:
   FRONTEND_URL: "https://support.azify.ir"
-  FORCE_SSL: true
+  FORCE_SSL: false
   SECRET_KEY_BASE: d1e73896fa24dbe22ba7f8d5639e95be1cef7ca10704f0fc7e4287fb6bd16c60
