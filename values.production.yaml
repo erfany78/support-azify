@@ -1,0 +1,32 @@
+# Custom production values for Chatwoot
+# Domain: support.azify.ir
+# Ingress Controller: Traefik
+# TLS: External certs via kubernetes secret "chatwoot-tls-secret"
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  annotations:
+    # Explicitly instruct Traefik to handle this ingress resource
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - host: support.azify.ir
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              # Note: If your Helm release name is NOT "chatwoot",
+              # change this service name to "<release-name>-chatwoot"
+              name: chatwoot
+              port:
+                number: 3000
+  tls:
+    - secretName: chatwoot-tls-secret
+      hosts:
+        - support.azify.ir
+
+env:
+  FRONTEND_URL: "https://support.azify.ir"
+  FORCE_SSL: true
+  SECRET_KEY_BASE: d1e73896fa24dbe22ba7f8d5639e95be1cef7ca10704f0fc7e4287fb6bd16c60
