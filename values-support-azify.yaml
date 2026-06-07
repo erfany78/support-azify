@@ -30,3 +30,17 @@ config:
     # A unique 32-character encryption key is required.
     # We have pre-generated one for you. Keep this safe.
     encryptionKey: "5c8bde34f19b22a014d3b6f8a9e0f6c2"
+
+    # --- Font Customization (Via Custom Static Directory) ---
+    # To override the widget font-family, point to a folder containing custom assets
+    # (Uncomment this and the extraVolumeMounts/extraVolumes sections below to use)
+    # staticDir: "/libredesk/custom-static"
+
+# extraVolumeMounts:
+#   - name: custom-static-assets
+#     mountPath: /libredesk/custom-static
+# 
+# extraVolumes:
+#   - name: custom-static-assets
+#     configMap:
+#       name: libredesk-custom-static
