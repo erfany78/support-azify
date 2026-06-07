@@ -89,6 +89,8 @@ config:
       enabled: false
       name: ""
       key: "encryptionKey"
+    # Path to custom static assets (for white-labeling/widgets CSS custom overrides)
+    staticDir: ""
   
   upload:
     provider: "fs"
@@ -152,4 +154,11 @@ config:
   
   sla:
     evaluationInterval: "5m"
+
+# Additional volume mounts for mounting custom static files/directories
+extraVolumeMounts: []
+
+# Additional volumes for custom configuration/static overrides
+extraVolumes: []
+
 

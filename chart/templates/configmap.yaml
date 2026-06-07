@@ -13,6 +13,10 @@ data:
     env = {{ .Values.config.app.env | quote }}
     check_updates = {{ .Values.config.app.checkUpdates }}
     encryption_key = {{ if .Values.config.app.existingSecret.enabled }}"__ENCRYPTION_KEY__"{{ else }}{{ .Values.config.app.encryptionKey | quote }}{{ end }}
+    {{- if .Values.config.app.staticDir }}
+    static_dir = {{ .Values.config.app.staticDir | quote }}
+    {{- end }}
+
 
     [app.server]
     address = "0.0.0.0:9000"
