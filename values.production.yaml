@@ -1,7 +1,10 @@
 # Custom production values for Chatwoot
 # Domain: support.azify.ir
 # Ingress Controller: Traefik
-# TLS: External certs via kubernetes secret "chatwoot-tls-secret"
+image:
+  repository: sendingtk/chatwoot
+  tag: latest
+  pullPolicy: IfNotPresent
 
 ingress:
   enabled: true
