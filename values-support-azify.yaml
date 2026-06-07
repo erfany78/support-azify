@@ -3,11 +3,9 @@
 
 ingress:
   enabled: true
-  # Set the ingress className to match your ingress controller (e.g. nginx)
-  className: "nginx"
-  annotations:
-    # Adjust annotations as needed for your ingress controller
-    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+  # Set the ingress className to match your ingress controller (traefik)
+  className: "traefik"
+  annotations: {}
   hosts:
     - host: support.azify.ir
       paths:
