@@ -1,0 +1,25 @@
+# Custom values for support.azify.ir LibreDesk deployment
+# Save this file as values-support-azify.yaml
+
+ingress:
+  enabled: true
+  # Set the ingress className to match your ingress controller (e.g. nginx)
+  className: "nginx"
+  annotations:
+    # Adjust annotations as needed for your ingress controller
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+  hosts:
+    - host: support.azify.ir
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: support-azify-tls
+      hosts:
+        - support.azify.ir
+
+config:
+  app:
+    # A unique 32-character encryption key is required.
+    # We have pre-generated one for you. Keep this safe.
+    encryptionKey: "5c8bde34f19b22a014d3b6f8a9e0f6c2"
