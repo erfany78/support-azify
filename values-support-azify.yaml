@@ -16,6 +16,15 @@ ingress:
       hosts:
         - support.azify.ir
 
+# To use a custom admin/system password, create a secret:
+# kubectl create secret generic libredesk-admin-password --from-literal=password="YourSecurePasswordHere" -n <namespace>
+# Then uncomment the block below:
+# systemUserPassword:
+#   existingSecret:
+#     enabled: true
+#     name: "libredesk-admin-password"
+#     key: "password"
+
 config:
   app:
     # A unique 32-character encryption key is required.
